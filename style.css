@@ -8,6 +8,7 @@ body {
     font-family: 'Noto Sans KR', sans-serif;
     line-height: 1.6;
     background-color: #f5f5f5;
+    color: #333;
 }
 
 .container {
@@ -18,16 +19,48 @@ body {
 
 header {
     text-align: center;
-    padding: 40px 0;
+    padding: 60px 0;
     background: linear-gradient(135deg, #1a237e, #0d47a1);
     color: white;
     border-radius: 10px;
     margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.1)" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+    background-size: cover;
+    opacity: 0.1;
 }
 
 header h1 {
-    font-size: 2.5em;
-    margin-bottom: 10px;
+    font-size: 3em;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    position: relative;
+}
+
+header p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.header-quote {
+    font-style: italic;
+    font-size: 1.1em;
+    margin-top: 20px;
+    padding: 15px 30px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 5px;
+    display: inline-block;
 }
 
 .slideshow-container {
@@ -53,7 +86,8 @@ header h1 {
     padding: 30px;
     text-align: center;
     cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.3s ease;
+    position: relative;
 }
 
 .story-content:hover {
@@ -64,6 +98,7 @@ header h1 {
 .story-content h2 {
     color: #1a237e;
     margin-bottom: 20px;
+    font-size: 1.8em;
 }
 
 .story-content img {
@@ -72,11 +107,30 @@ header h1 {
     object-fit: cover;
     border-radius: 5px;
     margin-bottom: 20px;
+    transition: transform 0.3s ease;
+}
+
+.story-content:hover img {
+    transform: scale(1.02);
 }
 
 .story-content p {
     color: #666;
     font-size: 1.1em;
+    margin-bottom: 15px;
+}
+
+.story-preview {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 15px;
+}
+
+.story-preview p {
+    color: #1a237e;
+    font-weight: bold;
+    margin: 0;
 }
 
 .prev, .next {
@@ -107,18 +161,77 @@ header h1 {
     background-color: rgba(0, 0, 0, 0.8);
 }
 
-@keyframes fade {
-    from {opacity: 0.4}
-    to {opacity: 1}
+.achievement-section {
+    margin: 40px 0;
+    text-align: center;
+}
+
+.achievement-section h2 {
+    color: #1a237e;
+    margin-bottom: 30px;
+    font-size: 2em;
+}
+
+.achievement-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.achievement-item {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.achievement-item:hover {
+    transform: translateY(-5px);
+}
+
+.achievement-item h3 {
+    color: #1a237e;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.achievement-item p {
+    color: #666;
 }
 
 footer {
     text-align: center;
-    padding: 20px;
+    padding: 30px;
     background: #1a237e;
     color: white;
     border-radius: 10px;
     margin-top: 40px;
+}
+
+.social-links {
+    margin-top: 20px;
+}
+
+.social-link {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    padding: 5px 10px;
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: white;
+}
+
+@keyframes fade {
+    from {opacity: 0.4}
+    to {opacity: 1}
 }
 
 @media (max-width: 768px) {
@@ -128,5 +241,9 @@ footer {
     
     .story-content img {
         height: 300px;
+    }
+
+    .achievement-grid {
+        grid-template-columns: 1fr;
     }
 } 
